@@ -1,45 +1,104 @@
 import { styled } from "styled-components";
 import BackgroundWords from "../components/BackgroundWords";
 import { GetImageUrl } from "../helpers/GetImageUrl";
+import { motion } from "framer-motion";
 
 export default function Profile() {
   return (
     <section className="container section">
-      <BackgroundWords>
-        <h2>Hola👋🏼 somos MOB Studio</h2>
+      <BackgroundWords vhMobile="50vh" vhDesktop="70vh">
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.4,
+            ease: "easeInOut",
+          }}
+          viewport={{ once: true }}
+        >
+          Hola👋🏼 somos MOB Studio
+        </motion.h2>
       </BackgroundWords>
 
-      <ContentImagesProfile>
-        <div>
-          <img src={GetImageUrl("project_1")} alt="" />
-        </div>
-        <div>
-          <img src={GetImageUrl("project_6")} alt="" />
-        </div>
-      </ContentImagesProfile>
+      <motion.article
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.4,
+          delay: 0.5,
+          ease: "easeInOut",
+        }}
+        // viewport={{ once: true }}
+        viewport={{ once: true }}
+      >
+        <ContentImagesProfile>
+          <div>
+            <img src={GetImageUrl("project_1")} alt="" />
+          </div>
+          <div>
+            <img src={GetImageUrl("project_6")} alt="" />
+          </div>
+        </ContentImagesProfile>
+      </motion.article>
 
-      <About>
-        <h5>Sobre nosotros</h5>
+      <motion.article
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.4,
+          ease: "easeInOut",
+        }}
+        viewport={{ once: true, amount: 0.8 }}
+      >
+        <About>
+          <h5>Sobre nosotros</h5>
+          <div>
+            <h3>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore
+              voluptatem minima excepturi quaerat porro, magni officia ullam
+              dignissimos, repellat error quidem esse maxime exercitationem
+              voluptatibus maiores odio.
+            </h3>
+          </div>
+        </About>
+      </motion.article>
 
-        <div>
-          <h3>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore
-            voluptatem minima excepturi quaerat porro, magni officia ullam
-            dignissimos, repellat error quidem esse maxime exercitationem
-            voluptatibus maiores odio.
-          </h3>
-        </div>
-      </About>
-
-      <BackgroundWords>
-        <h2>Trabajemmos juntos.</h2>
-        <a href="#">Ponerse en contacto.</a>
+      <BackgroundWords vhMobile="50vh">
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.4,
+            ease: "easeInOut",
+          }}
+          viewport={{ once: true, amount: 0.8 }}
+        >
+          Trabajemos juntos.
+        </motion.h2>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.4,
+            delay: 0.3,
+            ease: "easeInOut",
+          }}
+          viewport={{ once: true, amount: 0.8 }}
+        >
+          <a
+            href="mailto:luisadriannu13@gmail.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Ponerse en contacto.
+          </a>
+        </motion.div>
       </BackgroundWords>
     </section>
   );
 }
 
-const ContentImagesProfile = styled.article`
+const ContentImagesProfile = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -54,7 +113,7 @@ const ContentImagesProfile = styled.article`
   }
 `;
 
-const About = styled.article`
+const About = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

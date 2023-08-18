@@ -2,11 +2,18 @@ import { NavLink } from "react-router-dom";
 import "./Styles.css";
 
 export default function Header() {
+  const scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+    });
+  };
+
   return (
     <header className="header">
       <div className="menu">
         <div>
           <NavLink
+            onClick={scrollTop}
             className={({ isActive }) => (isActive ? "active-link" : null)}
             to="/"
           >
@@ -15,6 +22,7 @@ export default function Header() {
         </div>
         <div>
           <NavLink
+            onClick={scrollTop}
             className={({ isActive }) => (isActive ? "active-link" : null)}
             to="/perfil"
           >
@@ -23,6 +31,7 @@ export default function Header() {
         </div>
         <div>
           <NavLink
+            onClick={scrollTop}
             className={({ isActive }) => (isActive ? "active-link" : null)}
             to="/contacto"
           >
