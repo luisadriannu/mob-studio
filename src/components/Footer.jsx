@@ -8,7 +8,7 @@ export default function Footer() {
         <ContentLogo>
           <motion.div
             animate={{
-              scale: [1, 1.2, 1.2, 1, 1],
+              scale: [1, 1.1, 1.1, 1, 1],
               rotate: [0, 0, 180, 180, 0],
             }}
             transition={{

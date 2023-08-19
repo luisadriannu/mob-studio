@@ -2,69 +2,49 @@ import { styled } from "styled-components";
 import BackgroundWords from "../components/BackgroundWords";
 import { GetImageUrl } from "../helpers/GetImageUrl";
 import { motion } from "framer-motion";
+import Header from "../components/Header";
 
 export default function Profile() {
   return (
-    <section className="container section">
-      <BackgroundWords vhMobile="50vh" vhDesktop="70vh">
-        <motion.h2
+    <>
+      <Header />
+      <section className="container section">
+        <BackgroundWords vhMobile="50vh" vhDesktop="70vh">
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.4,
+              ease: "easeInOut",
+            }}
+            viewport={{ once: true }}
+          >
+            Hola👋🏼 somos MOB Studio
+          </motion.h2>
+        </BackgroundWords>
+
+        <motion.article
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{
             duration: 0.4,
+            delay: 0.5,
             ease: "easeInOut",
           }}
+          // viewport={{ once: true }}
           viewport={{ once: true }}
         >
-          Hola👋🏼 somos MOB Studio
-        </motion.h2>
-      </BackgroundWords>
+          <ContentImagesProfile>
+            <div>
+              <img src={GetImageUrl("project_1")} alt="" />
+            </div>
+            <div>
+              <img src={GetImageUrl("project_6")} alt="" />
+            </div>
+          </ContentImagesProfile>
+        </motion.article>
 
-      <motion.article
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.4,
-          delay: 0.5,
-          ease: "easeInOut",
-        }}
-        // viewport={{ once: true }}
-        viewport={{ once: true }}
-      >
-        <ContentImagesProfile>
-          <div>
-            <img src={GetImageUrl("project_1")} alt="" />
-          </div>
-          <div>
-            <img src={GetImageUrl("project_6")} alt="" />
-          </div>
-        </ContentImagesProfile>
-      </motion.article>
-
-      <motion.article
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.4,
-          ease: "easeInOut",
-        }}
-        viewport={{ once: true, amount: 0.8 }}
-      >
-        <About>
-          <h5>Sobre nosotros</h5>
-          <div>
-            <h3>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore
-              voluptatem minima excepturi quaerat porro, magni officia ullam
-              dignissimos, repellat error quidem esse maxime exercitationem
-              voluptatibus maiores odio.
-            </h3>
-          </div>
-        </About>
-      </motion.article>
-
-      <BackgroundWords vhMobile="50vh">
-        <motion.h2
+        <motion.article
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{
@@ -73,28 +53,53 @@ export default function Profile() {
           }}
           viewport={{ once: true, amount: 0.8 }}
         >
-          Trabajemos juntos.
-        </motion.h2>
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.4,
-            delay: 0.3,
-            ease: "easeInOut",
-          }}
-          viewport={{ once: true, amount: 0.8 }}
-        >
-          <a
-            href="mailto:luisadriannu13@gmail.com"
-            target="_blank"
-            rel="noreferrer"
+          <About>
+            <h5>Sobre nosotros</h5>
+            <div>
+              <h3>
+                Somos más que un estudio, somos narradores visuales que
+                transformamos tus momentos en historias inolvidables. Con un
+                equipo de apasionados fotógrafos y un enfoque creativo, nos
+                esforzamos por inmortalizar tus momentos especiales con una
+                dosis perfecta de estilo y emoción.
+              </h3>
+            </div>
+          </About>
+        </motion.article>
+
+        <BackgroundWords vhMobile="50vh">
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.4,
+              ease: "easeInOut",
+            }}
+            viewport={{ once: true, amount: 0.8 }}
           >
-            Ponerse en contacto.
-          </a>
-        </motion.div>
-      </BackgroundWords>
-    </section>
+            Trabajemos juntos.
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.4,
+              delay: 0.3,
+              ease: "easeInOut",
+            }}
+            viewport={{ once: true, amount: 0.8 }}
+          >
+            <a
+              href="mailto:luisadriannu13@gmail.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Ponerse en contacto.
+            </a>
+          </motion.div>
+        </BackgroundWords>
+      </section>
+    </>
   );
 }
 

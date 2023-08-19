@@ -9,45 +9,47 @@ import { useEffect, useState } from "react";
 const data = [
   {
     id: 1,
-    image: `${GetImageUrl("project_1")}`,
-    title: "Fotografía Profesional",
+    image: `${GetImageUrl("project-photography_5")}`,
+    title: "Magic Gifts",
     locked: false,
+    route: "/proyectos/magicgifts",
   },
   {
     id: 2,
     image: `${GetImageUrl("project_2")}`,
     title: "Retratos increibles",
-    locked: false,
+    locked: true,
   },
   {
     id: 3,
     image: `${GetImageUrl("project_3")}`,
-    title: "Estudio profesional",
+    title: "Estilo",
     locked: true,
   },
   {
     id: 4,
     image: `${GetImageUrl("project_4")}`,
-    title: "Fotografía única",
+    title: "Nissi Beach",
     locked: true,
   },
   {
     id: 5,
     image: `${GetImageUrl("project_5")}`,
-    title: "Paisajes",
-    locked: false,
+    title: "Glacier National Park",
+    locked: true,
   },
   {
     id: 6,
     image: `${GetImageUrl("project_6")}`,
-    title: "Fotografías de todo tipo",
-    locked: false,
+    title: "Work Home",
+    locked: true,
   },
   {
     id: 7,
     image: `${GetImageUrl("project_7")}`,
-    title: "Nieve",
+    title: "New York",
     locked: false,
+    route: "/proyectos/newyork",
   },
   {
     id: 8,
@@ -60,13 +62,12 @@ const data = [
     image: `${GetImageUrl("project_9")}`,
     title: "Maekup",
     locked: true,
-    // locked: "bi bi-lock-fill"
   },
   {
     id: 10,
     image: `${GetImageUrl("project_10")}`,
-    title: "Captura momentos únicos",
-    locked: false,
+    title: "Parque",
+    locked: true,
   },
 ];
 
@@ -87,6 +88,12 @@ export default function Projects() {
     };
   }, []);
 
+  const scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+    });
+  };
+
   return (
     <>
       <motion.section
@@ -102,10 +109,13 @@ export default function Projects() {
         <ContentMainProjects>
           {data.map((item, index) => {
             return (
-              <ContentProject key={index}>
+              <ContentProject
+                key={index}
+                className={item.locked ? "locked" : null}
+              >
                 <NavLink
-                  className={item.locked ? "locked" : null}
-                  to="/contacto"
+                  to={item.route}
+                  onClick={item.locked ? null : scrollTop}
                 >
                   <Project src={item.image} />
                   {isVisible ? (
@@ -121,7 +131,12 @@ export default function Projects() {
                     <i className="bi bi-lock-fill"></i>
                   ) : null}
                 </NavLink>
-                <p>{item.title}</p>
+                <ContentTexts>
+                  <p>{item.title}</p>
+                  <p className="coming-soon">
+                    {item.locked ? "* Próximamente" : null}
+                  </p>
+                </ContentTexts>
               </ContentProject>
             );
           })}
@@ -220,12 +235,13 @@ const ContentProject = styled.div`
       }
     }
 
+    a {
+      pointer-events: all;
+    }
+
     i {
       opacity: 0;
       font-size: 24px;
-      position: absolute;
-      top: 1.2rem;
-      right: 1.2rem;
       color: #fff;
       transition: opacity 0.3s ease-in;
     }
@@ -233,12 +249,22 @@ const ContentProject = styled.div`
     p {
       font-size: 17px;
       opacity: 0;
-      position: absolute;
-      top: 1.2rem;
-      left: 1.2rem;
       color: #fff;
       text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.44);
       transition: opacity 0.3s ease-in;
     }
+  }
+`;
+
+const ContentTexts = styled.div`
+  display: flex;
+  gap: 10px;
+
+  @media screen and (min-width: 1024px) {
+    flex-direction: column;
+    position: absolute;
+    top: 1.2rem;
+    left: 1.2rem;
+    pointer-events: none;
   }
 `;
